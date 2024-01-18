@@ -137,7 +137,28 @@ window_rules:
   - command: "set floating"
     match_class_name: "#32770"
 
+
+binding_modes:
+  - name: "resize"
+    keybindings:
+      # Resize focused window by a percentage or pixel amount.
+      - command: "resize width -2%"
+        bindings: ["A", "Left"]
+      - command: "resize width +2%"
+        bindings: ["D", "Right"]
+      - command: "resize height +2%"
+        bindings: ["W", "Up"]
+      - command: "resize height -2%"
+        bindings: ["S", "Down"]
+      # Press enter/escape to return to default keybindings.
+      - command: "binding mode none"
+        bindings: ["Escape", "Enter"]
+
 keybindings:
+  # As an alternative to the resize keybindings above, resize mode enables resizing via
+  # HJKL or arrow keys. The binding mode is defined above with the name "resize".
+  - command: "binding mode resize"
+    binding: "Alt+R"
   # Shift focus in a given direction.
   - command: "focus left"
     bindings: ["Alt+A"]
